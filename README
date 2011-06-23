@@ -1,0 +1,9 @@
+This is an emulator of Kindle for running kindlets
+based on the code from http://code.google.com/p/kdk-emulator/
+
+To build:
+$python waf configure
+$python waf build
+
+To Run your kindlet:
+java -cp "your_kindlet.jar;path_to_your_KEmulator.jar" org.kemulator.kindlet.KindletViewer your_kindlet_class
