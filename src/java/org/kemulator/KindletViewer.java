@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+import javax.swing.JViewport;
 
 import com.amazon.kindle.kindlet.Kindlet;
 import com.amazon.kindle.kindlet.KindletContext;
@@ -32,38 +33,48 @@ public class KindletViewer {
      */
     public static void main(String[] args) throws Exception {
         BufferedImage image = ImageIO.read(KindletViewer.class.getResource("/resources/kindle3-landscape.png"));
+		//System.out.println("Image size: " + image.getWidth() + " x " + image.getHeight());
+
         ImageBorder border = new ImageBorder(image);
-        border.setInsets(new Insets(105, 106, 103, 340));
+        border.setInsets(new Insets(102, 107, 106, 339));
 
         //Dimension size = new Dimension(600, 800);
-        Dimension size = new Dimension(1246, 808);
+		//image size: 1246 x 808
+        Dimension size = new Dimension(image.getWidth(), image.getHeight());
         JScrollPane pane = new JScrollPane();
         pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         pane.setPreferredSize(size);
         pane.setMaximumSize(size);
         pane.setMinimumSize(size);
-        pane.setSize(size);
+		pane.setSize(size);
         pane.setViewportBorder(border);
+
+
+		System.out.println("view port size: " + pane.getViewport().getViewSize());
 
         JFrame frame = new JFrame();
         frame.setTitle("Kindlet Viewer");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(image.getWidth(), image.getHeight()));
 
         frame.getContentPane().add(pane);
 
-		/*
-        KindletContext context = new KindletContextImpl(pane.getViewport());
+		JViewport vp = pane.getViewport();
+		vp.setSize(new Dimension(800, 600));
+		System.out.println("viewport = " + vp);
+
+        KindletContext context = new KindletContextImpl(vp);
 
         Kindlet kindlet = (Kindlet) Class.forName(args[0]).newInstance();
         kindlet.create(context);
-		*/
 
         frame.pack();
+		Insets b = frame.getInsets();
+        //frame.setSize(new Dimension(image.getWidth() + b.left + b.right, image.getHeight() + b.top + b.bottom));
+		frame.setResizable(false);
         frame.setVisible(true);
 
-        //kindlet.start();
+        kindlet.start();
     }
 }
 
