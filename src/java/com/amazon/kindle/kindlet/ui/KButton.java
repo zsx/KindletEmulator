@@ -4,6 +4,7 @@
 
 package com.amazon.kindle.kindlet.ui;
 
+import javax.swing.JButton;
 
 /**
  * This class creates a labeled button, in the Kindle style. A button can
@@ -20,8 +21,11 @@ public class KButton extends com.amazon.kindle.kindlet.ui.KComponent {
     /**
      * Constructs a new button with no label.
      */
+	private JButton button;
+
     public KButton() {
-        // TODO codavaj!!
+		System.err.println("KButton ctor ()");
+		button = new JButton();
     }
 
     /**
@@ -30,7 +34,8 @@ public class KButton extends com.amazon.kindle.kindlet.ui.KComponent {
      * @param label - label to appear on the button, or null for no label
      */
     public KButton(java.lang.String label) {
-        // TODO codavaj!!
+		System.err.println("KButton ctor " + label);
+		button = new JButton(label);
     }
 
     /**
@@ -40,7 +45,9 @@ public class KButton extends com.amazon.kindle.kindlet.ui.KComponent {
      * exception is thrown and no action is performed.
      */
     public void addActionListener(java.awt.event.ActionListener listener) {
-        return; // TODO codavaj!!
+		System.err.println("KButton addActionListener()" + listener);
+		button.addActionListener(listener);
+        //return; // TODO codavaj!!
     }
 
     /**
@@ -48,68 +55,105 @@ public class KButton extends com.amazon.kindle.kindlet.ui.KComponent {
      * default this returns the button's label.
      */
     public java.lang.String getActionCommand() {
-        return null; // TODO codavaj!!
+		System.err.println("KButton getActionCommand()");
+		return button.getActionCommand();
+        //return null; // TODO codavaj!!
     }
 
     /**
      * Returns an array of all the action listeners registered on this button.
      */
     public java.awt.event.ActionListener[] getActionListeners() {
-        return null; // TODO codavaj!!
+		System.err.println("KButton getActionListeners()");
+		return button.getActionListeners();
+        //return null; // TODO codavaj!!
     }
 
     public java.awt.Color getBackground() {
-        return null; // TODO codavaj!!
+		System.err.println("KButton getBackground()");
+		return button.getBackground();
+        //return null; // TODO codavaj!!
     }
 
     public java.awt.Font getFont() {
-        return null; // TODO codavaj!!
+		System.err.println("KButton getFont(): " + button.getFont());
+		return button.getFont();
+        //return null; // TODO codavaj!!
     }
 
     public java.awt.Color getForeground() {
-        return null; // TODO codavaj!!
+		System.err.println("KButton getForeground()");
+		return button.getForeground();
+        //return null; // TODO codavaj!!
     }
 
     /**
      * Gets the label for this button
      */
     public java.lang.String getLabel() {
-        return null; // TODO codavaj!!
+		System.err.println("KButton getLabel()");
+		return button.getLabel();
+        //return null; // TODO codavaj!!
     }
 
     public java.awt.Dimension getMaximumSize() {
-        return null; // TODO codavaj!!
+		System.err.println("KButton getMaximumSize()");
+		return button.getMaximumSize();
+        //return null; // TODO codavaj!!
     }
 
     public java.awt.Dimension getMinimumSize() {
-        return null; // TODO codavaj!!
+		System.err.println("KButton getMinimumSize()");
+		return button.getMinimumSize();
+        //return null; // TODO codavaj!!
     }
 
     public java.awt.Dimension getPreferredSize() {
-        return null; // TODO codavaj!!
+		java.awt.Dimension size = button.getPreferredSize();
+		System.err.println("KButton getPreferredSize(): " + size);
+		return size;
+        //return null; // TODO codavaj!!
     }
 
     public boolean hasFocus() {
-        return false; // TODO codavaj!!
+		System.err.println("KButton hasFocus(): " + button.hasFocus());
+		return button.hasFocus();
+        //return false; // TODO codavaj!!
     }
 
     public boolean isEnabled() {
-        return false; // TODO codavaj!!
+		System.err.println("KButton isEnabled(): " + button.isEnabled());
+		return button.isEnabled();
+        //return false; // TODO codavaj!!
     }
 
     public void paint(java.awt.Graphics graphics) {
-        return; // TODO codavaj!!
+		System.err.println("KButton painting");
+		button.paint(graphics);
+        //return; // TODO codavaj!!
     }
 
     protected void processComponentEvent(java.awt.event.ComponentEvent componentEvent) {
+		System.err.println("KButton processComponentEvent " + componentEvent);
+		//button.processComponentEvent(componentEvent);
+		componentEvent.setSource(button);
+		button.dispatchEvent(componentEvent);
         return; // TODO codavaj!!
     }
 
     protected void processFocusEvent(java.awt.event.FocusEvent focusEvent) {
+		System.err.println("KButton processFocusEvent " + focusEvent);
+		focusEvent.setSource(button);
+		button.dispatchEvent(focusEvent);
+		//button.processFocusEvent(focusEvent);
         return; // TODO codavaj!!
     }
 
     protected void processKeyEvent(java.awt.event.KeyEvent keyEvent) {
+		System.err.println("KButton processKeyEvent " + keyEvent);
+		keyEvent.setSource(button);
+		button.dispatchEvent(keyEvent);
+		//button.processKeyEvent(keyEvent);
         return; // TODO codavaj!!
     }
 
@@ -119,7 +163,9 @@ public class KButton extends com.amazon.kindle.kindlet.ui.KComponent {
      * thrown.
      */
     public void removeActionListener(java.awt.event.ActionListener listener) {
-        return; // TODO codavaj!!
+		System.err.println("KButton removeActionListener " + listener);
+		button.removeActionListener(listener);
+        //return; // TODO codavaj!!
     }
 
     /**
@@ -127,34 +173,49 @@ public class KButton extends com.amazon.kindle.kindlet.ui.KComponent {
      * pressed.
      */
     public void setActionCommand(java.lang.String command) {
-        return; // TODO codavaj!!
+		System.err.println("KButton setActionCommand " + command);
+		button.setActionCommand(command);
+        //return; // TODO codavaj!!
     }
 
     public void setBackground(java.awt.Color color) {
-        return; // TODO codavaj!!
+		System.err.println("KButton setBackground " + color);
+		button.setBackground(color);
+        //return; // TODO codavaj!!
     }
 
     public void setBounds(int x, int y, int width, int height) {
-        return; // TODO codavaj!!
+		System.err.println("KButton setBounds (" + x + ", " + y + ", " + width + ", " + height + ")");
+		button.setBounds(x, y, width, height);
+		super.setBounds(x, y, width, height);
+        //return; // TODO codavaj!!
     }
 
     public void setEnabled(boolean flag) {
-        return; // TODO codavaj!!
+		System.err.println("KButton setEnabled " + flag);
+		button.setEnabled(flag);
+        //return; // TODO codavaj!!
     }
 
     public void setFont(java.awt.Font font) {
-        return; // TODO codavaj!!
+		System.err.println("KButton setFont " + font);
+		button.setFont(font);
+        //return; // TODO codavaj!!
     }
 
     public void setForeground(java.awt.Color color) {
-        return; // TODO codavaj!!
+		System.err.println("KButton setForeground " + color);
+		button.setForeground(color);
+        //return; // TODO codavaj!!
     }
 
     /**
      * Sets the button's label to the specified string.
      */
     public void setLabel(java.lang.String label) {
-        return; // TODO codavaj!!
+		System.err.println("KButton setLabel " + label);
+		button.setLabel(label);
+        //return; // TODO codavaj!!
     }
 
 }
